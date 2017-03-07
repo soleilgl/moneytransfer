@@ -1,0 +1,109 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <script src="/JS/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="/JS/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/JS/bootstrap-theme.min.css" type="text/css"/>
+    <script src="/JS/bootstrap.min.js"></script>
+     <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+     <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+     <script src="/JS/pubsub.js"></script>
+</head>
+<body>
+<style>
+    .users{width:320px;height:190px;border-style:dashed;position: absolute;top:100px;left:-270px;color:brown;border-radius:10px;cursor:pointer;text-indent:12px;text-align: center;padding-top: 20px}
+    .phone{ width:500px;height:800px;background: url('/image/phone2.JPG');background-repeat: no-repeat;background-size: 500px 800px;position: relative;margin:0 auto}
+    .father{width:340px;height:578px;margin:0;padding:0;border-style:solid;border-color:grey;position: absolute;top:107px;left:85px;background-color: white}
+    .headBar{width:338px;height:60px;margin:0;padding:0; top:107px;left:85px;background-color:grey;position:absolute;font-size: 15;}
+    .sendMoney{border-style:solid;border-color: lightgrey;width:298px;height:70px;margin-top: 100px;margin-left: 20px;margin-right: 20px;padding:10;background-color:lightgrey;position:absolute;top:160px;left:85px;font-size: 15;}
+    .viewHistory{border-style:solid;border-color: lightgrey;width:298px;height:70px;margin-top: 100px;margin-left: 20px;margin-right: 20px;padding:10;background-color:lightgrey;position:absolute;top:310px;left:85px;font-size: 15;}
+    .buttom{width:338px;height:60px;margin:0;padding:0;background-color:grey;position:absolute;top:625px;left:85px;}
+      .text1{color:black; text-align:center;font-size: 25}
+      .text2{text-align:center;font-size: 18}
+      .black{color:black;}
+</style>
+    <div className="container" id="container"></div>
+    <script type="text/babel">
+    var Main=React.createClass({
+      render:function(){
+       return(
+         <div className="phone">
+          <Userscomponent/>
+          <Fathercomponent/>
+          <HeadBarcomponent/>
+          <SendMoneycomponent/>
+          <ViewHistorycomponent/>
+          <Buttomcomponent/>
+          </div>
+        )
+      },
+    })
+
+    var Userscomponent=React.createClass({
+      render:function(){
+       return(
+          <div className="users">
+          <strong>
+          registered users to try the demonstration<p></p>
+          </strong>
+          john@paypal.com<p></p>
+          Applebee@paypal.com<p></p>
+          Ebay@paypal.com<p></p>
+          JambaJuice@paypal.com
+          </div>
+        )
+      },
+    })
+
+    var Fathercomponent=React.createClass({
+      render:function(){
+       return(
+          <div className="father">
+          </div>
+        )
+      },
+    })
+
+    var HeadBarcomponent=React.createClass({
+      render:function(){
+       return(
+          <div className="headBar text1">
+          <p></p>What are we Doing
+          </div>
+        )
+      },
+    })
+
+    var SendMoneycomponent=React.createClass({
+      render:function(){
+       return(
+           <div className="sendMoney text2">
+           <p></p><a href="/nodejs/sendMoney" className="black">Send Money</a>
+           </div>
+        )
+      },
+    })
+
+    var ViewHistorycomponent=React.createClass({
+      render:function(){
+       return(
+           <div className="viewHistory text2">
+           <p></p><a href="/nodejs/viewHistory" className="black">View Transaction History</a>
+           </div>
+        )
+      },
+    })
+
+    var Buttomcomponent=React.createClass({
+      render:function(){
+       return(
+           <div className="buttom">
+           </div>
+        )
+      },
+    })
+    ReactDOM.render(<Main/>,document.getElementById('container'))
+</script>
+</body>
+</html>

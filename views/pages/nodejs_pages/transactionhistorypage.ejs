@@ -1,0 +1,125 @@
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <script src="/JS/jquery-3.1.1.min.js"></script>
+  <link rel="stylesheet" href="/JS/bootstrap.min.css" type="text/css"/>
+  <link rel="stylesheet" href="/JS/bootstrap-theme.min.css" type="text/css"/>
+  <script src="/JS/bootstrap.min.js"></script>
+   <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+   <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+   <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<style>
+    .phone{ width:500px;height:800px;background: url('/image/phone2.JPG');background-repeat: no-repeat;background-size: 500px 800px;position: relative;margin:0 auto}
+    .father{width:340px;height:578px;margin:0;padding:0;border-style:solid;border-color:grey;position: absolute;top:107px;left:85px;background-color: white}
+    .headBar{width:340px;height:60px;margin:0;padding:0;background-color:grey;position:absolute;font-size: 15;top:107px;left:85px;}
+    .sendMoneyBody{width:335px;height:440px;padding:0px;position:absolute;top:167px;left:87px;overflow-y:scroll;}
+    .button{width:338px;height:60px;;margin:0;padding:10px; background-color:grey;position:absolute;top:625px;left:85px;}
+    .btn1{width:300px;height:30px;top:10px;left:20px;position:absolute;border-style:solid;height:40px}
+    .text1{color:black;text-align: center;font-size: 25}
+</style>
+<div className="container" id="container"></div>
+<script type="text/babel">
+var data = <%- JSON.stringify(categories) %>
+      var Main=React.createClass({
+        render:function(){
+         return(
+           <div className="phone">
+            <Fathercomponent/>
+            <HeadBarcomponent/>
+            <Historybodycomponent data={this.props.data}/>
+            <Buttoncomponent/>
+            </div>
+          )
+        },
+      })
+
+      var Fathercomponent=React.createClass({
+        render:function(){
+         return(
+            <div className="father">
+            </div>
+          )
+        },
+      })
+
+      var HeadBarcomponent=React.createClass({
+        render:function(){
+         return(
+              <div className="headBar text1"><p></p>Transaction_History
+              </div>
+          )
+        },
+      })
+
+      var Historybodycomponent=React.createClass({
+        render:function(){
+         return(
+              <div className="sendMoneyBody">
+              <Historytablecomponent data={this.props.data}/>
+              </div>
+          )
+        },
+      })
+
+                var Historytablecomponent=React.createClass({
+                  render:function(){
+                    var newdata=this.props.data.map(function(item,index){
+                      return<Detailcomponent infoitem={item} key={index}/>
+                    })
+                   return(
+                     <table className="table table-strapped">
+                       <thead>
+                         <tr>
+                           <th>time</th>
+                           <th>receiver</th>
+                           <th>amount</th>
+                         </tr>
+                       </thead>
+                       <tbody>{newdata}</tbody>
+                     </table>
+                   );
+                  }
+                })
+
+                var Detailcomponent=React.createClass({
+                  render:function(){
+                    var item=this.props.infoitem
+                   return(
+                           <tr>
+                           <td>{item.time}</td>
+                           <td>{item.receiver}</td>
+                           <td>{item.amount}</td>
+                         </tr>
+                      )
+                  },
+                })
+
+      var Buttoncomponent=React.createClass({
+        render:function(){
+         return(
+              <div className="button">
+              <ButtonBcomponent/>
+              </div>
+          )
+        },
+      })
+
+              var ButtonBcomponent=React.createClass({
+                render:function(){
+                 return(
+                      <div>
+                      <input id="btn1" type="button" value="Back" className="btn1" onClick={this.linkHandle}/>
+                      </div>
+                  )
+                },
+                linkHandle:function(){
+                  location.href="/nodejs"
+                }
+              })
+
+ReactDOM.render(<Main data={data}/>,document.getElementById('container'))
+</script>
+</body>
+</html>

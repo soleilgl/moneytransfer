@@ -1,0 +1,109 @@
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <script src="/JS/jquery-3.1.1.min.js"></script>
+  <link rel="stylesheet" href="/JS/bootstrap.min.css" type="text/css"/>
+  <link rel="stylesheet" href="/JS/bootstrap-theme.min.css" type="text/css"/>
+  <script src="/JS/bootstrap.min.js"></script>
+   <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+   <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+   <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+   <script src="/JS/pubsub.js"></script>
+</head>
+<body>
+<style>
+.phone{ width:500px;height:800px;background: url('/image/phone2.JPG');background-repeat: no-repeat;background-size: 500px 800px;position: relative;margin:0 auto}
+.father{width:340px;height:578px;margin:0;padding:0;border-style:solid;border-color:grey;position: absolute;top:107px;left:85px;background-color: white}
+.headBar{width:340px;height:60px;margin:0;padding:0;background-color:grey;position:absolute;top:107px;left:85px;font-size: 15;}
+.sendMoneyBody{width:340px;height:458px;padding:0;position:absolute;float:left;text-align: center;top:307px;left:85px}
+.button{width:338px;height:60px;margin:0;padding:0;background-color:grey;position:absolute;top:625px;left:85px;}
+.img{width:100px;height:100px;background-repeat:no-repeat;}
+.btn1{width:140px;height:40px;position:absolute;left:10px;top:5px}
+.btn2{width:140px;height:40px;position:absolute;left:170px;top:5px}
+.text1{color:black;text-align: center;font-size: 25}
+</style>
+<div className="container" id="container"></div>
+<script type="text/babel">
+
+      var Main=React.createClass({
+        render:function(){
+         return(
+           <div className="phone">
+            <Fathercomponent/>
+            <HeadBarcomponent/>
+            <SendMoneyBodycomponent/>
+            <Buttoncomponent/>
+            </div>
+          )
+        },
+      })
+
+      var Fathercomponent=React.createClass({
+        render:function(){
+         return(
+            <div className="father">
+            </div>
+          )
+        },
+      })
+
+      var HeadBarcomponent=React.createClass({
+        render:function(){
+         return(
+              <div className="headBar text1"><p></p>Send Money
+              </div>
+          )
+        },
+      })
+
+      var SendMoneyBodycomponent=React.createClass({
+        render:function(){
+         return(
+                <div className="sendMoneyBody">
+                Tansaction Complete!<p></p>
+                <img src="/image/okk.JPG" className="img"/>
+                </div>
+          )
+        },
+      })
+
+      var Buttoncomponent=React.createClass({
+        render:function(){
+         return(
+                <div className="button">
+                <ButtonTcomponent/>
+                <ButtonScomponent/>
+                </div>
+          )
+        },
+      })
+
+      var ButtonTcomponent=React.createClass({
+        render:function(){
+         return(
+                <div className="btn1">
+                <input id="btn1" type="button" value="Send Money" className="btn2" onClick={this.linkHandle}/>
+                </div>
+          )
+        },
+        linkHandle:function(){
+          location.href="/nodejs/sendMoney"
+        }
+      })
+
+      var ButtonScomponent=React.createClass({
+        render:function(){
+         return(
+           <div className="btn1">
+           <input id="btn2" type="button" value="Transaction History" className="btn1" onClick={this.linkHandle}/>
+           </div>
+          )
+        },
+        linkHandle:function(){
+          location.href="/nodejs/viewHistory"
+        }
+      })
+ ReactDOM.render(<Main/>,document.getElementById('container'))
+ </script>
+</body>
+</html>

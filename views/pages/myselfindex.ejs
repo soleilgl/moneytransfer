@@ -1,0 +1,584 @@
+<html>
+<head>
+  <!-- <h1>Adel Resume</h1> -->
+  <meta charset="UTF-8" />
+  <script src="/JS/jquery-3.1.1.min.js"></script>
+  <link rel="stylesheet" href="/JS/bootstrap.min.css" type="text/css"/>
+  <link rel="stylesheet" href="/JS/bootstrap-theme.min.css" type="text/css"/>
+  <script src="/JS/bootstrap.min.js"></script>
+ <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+ <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+ <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+ </head>
+<body>
+<style>
+.background{width:1500px;height:600px;position:relative; margin:0px auto;background-color:white;overflow:hidden;top:10px}
+.forest{position:absolute;left:0;padding:0;margin:0;}
+.About-title{float:left;}
+.leveltable{opacity:0;width:460px;position: absolute;top:120px;left:100px;margin:0 auto;z-index:100;border-radius:10px;cursor:pointer;text-indent:12px;border: 5px groove;border-color:green;}
+.me{position: absolute;top:400px;left:60px;width:130px;height:700px}
+.flower{position: absolute;top:520px;left:200px;opacity:0.8;width:180px}
+.flower1{position: absolute;top:520px;left:1000px;opacity:0.8;width:180px}
+.animal{position: absolute;top:400px;left:1500px;opacity:0.8;width:300px}
+.pig{position: absolute;top:400px;left:1000px;opacity:0.8;width:300px;left:1500px;}
+.fish{position: absolute;top:500px;left:1500px;width:300px;height:25px;overflow: hidden;}
+.sun{position: absolute;top:20px;left:1250px;opacity:1.0}
+.cloud{position: absolute;top:30px;left:1500px;width:1000px}
+.spancloud{position: absolute;top:50px;font-size:30;}
+.car{position: absolute;top:225px;left:-250px;width:250px;height:230px;}
+.imgcar{position: absolute;top:150px;}
+.imgluggage{position: absolute;top:5px;}
+.spancar{color:black;position: absolute;left:20px;top:15px;margin:20px;font-size: 30}
+.flight{position: absolute;top:100px;left:1500px;width:850px;height:250px}
+.imgflight{position: absolute;top:0px;left:0px}
+.imgflag{position: absolute;top:34px;left:130px;opacity: 0.7;width:650px;height:150px}
+.introduction{position: absolute;top:600px;left:260px;width:240px;height:400px;background: url('/image/balloon.JPG');
+              background-repeat: no-repeat;background-size: 240px auto;}
+.introduction1{position: absolute;top:250px;left:310px;width:300px;height:200px;font-size:25;color:white;background: url('/image/chattingwindow.jpg');
+              background-repeat: no-repeat;background-size: 300px 200px;padding:30px;opacity:0}
+.spanintroduction1{position: absolute;top:35px;text-align: left;margin-left:30px}
+.span1{color:darkred;font-size:18;border-style:solid;position: absolute;top:240px;border-radius:10px;cursor:pointer;text-indent:12px;text-align: center;}
+.hat{position: absolute;top:360px;left:50px;background: url('/image/hat.jpg');background-repeat: no-repeat;background-size: 100px auto;width:100px;height:100px}
+.spanhat{color:white;font-size:25;text-align: center;left:15px;position: absolute;}
+.boat{position: absolute;top:240px;left:1500px;width:350px;height:300px}
+.spanboat{color:darkorange;position: absolute;top:0px;font-size:22;margin:2px;padding:5px}
+.imgboat{position: absolute;top:190px}
+.umbrella{position: absolute;left:-50px;top:-140px;transform:rotateZ(5deg);display: none}
+.spanumbrella{font-size: 18;position: absolute;left:-15px;top:-80px;display: none}
+.restart{position: absolute;left:500px;top:200px;color:red;display: none}
+.restartbtn{position: absolute;left:100px;top:50px;width:300px;height:40px;background-color:white}
+.center{text-align: center;background-color:white}
+ul li{list-style:none;float:left;margin:0;padding:0px}
+</style>
+<div id="resume">
+
+          <div id="title" class="center"><h2>Adel's Resume</h2>
+              <hr>
+              JavaScript, NodeJS, React JS, JQuery, HTML/CSS, Bootstrap, MongoDB/mongoose
+          </div>
+
+         <div id="background" class="background">
+             <ul id="forest" class="forest">
+                  <li> <img src="/image/backgroundland.JPG" width="600px" height="600px"/></li>
+                  <li> <img src="/image/backgroundland.JPG" width="600px" height="600px"/></li>
+                  <li> <img src="/image/backgroundland.JPG" width="600px" height="600px"/></li>
+                  <li> <img src="/image/backgroundland.JPG" width="600px" height="600px"/></li>
+                  <li> <img src="/image/backgroundland.JPG" width="600px" height="600px"/></li>
+             </ul>
+
+             <div id="restart" class="restart">
+             </br>
+             <a href="http://evening-plains-83433.herokuapp.com/">
+             <input id="restart" type="button" value="Click and Back to Home" class="restartbtn">
+              </a>
+             </div>
+
+             <div id="sun" class="sun">
+             <img src="/image/sun.JPG" width="80px" height="80px">
+             </div>
+
+             <div id="cloud" class="cloud">
+             <img src="/image/cloud3.jpg" width="300px" height="200px">
+             <span class="spancloud" style="left:60px">
+               I speak English
+             </span>
+             <img src="/image/cloud3.jpg" width="300px" height="200px">
+             <span class="spancloud" style="left:400px">
+              Mandarine
+             </span>
+             <img src="/image/cloud3.jpg" width="300px" height="200px">
+             <span class="spancloud" style="left:740px">
+               Korean
+             </span>
+             </div>
+
+             <div id="boat" class="boat">
+               <span class="spanboat">
+               Previously worked at Samsung Procument Center to purchase IC chips (Application Processor, Baseband, Sensors, PMIC, etc.) from various US based vendors for
+               Samsung Mobile Phones/Tablets.
+             </span>
+             <img src="/image/boat.jpg" width="350px" height="110px" class="imgboat"/>
+             </div>
+
+             <div id="car" class="car">
+             <img src="/image/car.jpg" width="200px" height="80px" class="imgcar"/>
+             <img src="/image/luggage.jpg" width="240px" height="150px" class="imgluggage"/>
+             <span class="spancar">
+               MongoDB
+             </br>Mongoose
+           </span>
+             </div>
+
+             <div id="flower" class="flower">
+             <img src="/image/flower.jpg" width="40px" height="60px">
+             <img src="/image/flower.jpg" width="60px" height="80px">
+             <img src="/image/flower.jpg" width="50px" height="70px">
+             </div>
+
+             <div id="flower1" class="flower1">
+             <img src="/image/flower1.jpg" width="30px" height="50px">
+             <img src="/image/flower1.jpg" width="20px" height="40px">
+             <img src="/image/flower1.jpg" width="40px" height="50px">
+             <img src="/image/flower1.jpg" width="20px" height="40px">
+             <img src="/image/flower1.jpg" width="30px" height="50px">
+             <img src="/image/flower1.jpg" width="20px" height="40px">
+             </div>
+
+             <div id="animal" class="animal">
+             <img src="/image/animal.jpg" width="70px" height="50px">
+             <img src="/image/animal.jpg" width="70px" height="50px">
+             <img src="/image/animal.jpg" width="50px" height="30px">
+             <img src="/image/animal.jpg" width="50px" height="30px">
+             </div>
+
+             <div id="fish" class="fish">
+             <img src="/image/fish.jpg" width="50px" height="30px">
+             <img src="/image/fish.jpg" width="40px" height="20px">
+             <img src="/image/fish.jpg" width="40px" height="30px">
+             <img src="/image/fish.jpg" width="50px" height="30px">
+             </div>
+
+             <div id="flight" class="flight">
+             <img src="/image/flight.jpg" width="150px" height="80px" class="imgflight">
+             <img src="/image/flag.jpg" width="800px" height="150px" class="imgflag">
+             </div>
+
+             <div id="pig" class="pig">
+             <img src="/image/pig.jpg" width="40px" height="50px">
+             <img src="/image/pig.jpg" width="40px" height="50px">
+             <img src="/image/pig.jpg" width="40px" height="50px">
+             <img src="/image/pig.jpg" width="40px" height="50px">
+             <img src="/image/pig.jpg" width="40px" height="50px">
+             </div>
+
+
+            <div id="divme" class="me">
+            <img src="/image/umbrella.jpg" width="300px" height="300px" class="umbrella" id="imgumbrella">
+            <img src="/image/me.jpg" width="120px" height="200px">
+             <span class="spanumbrella" id="spanumbrella">
+               <strong>
+               Contact:soleilgl@gmail.com
+             </strong>
+             </span>
+            </div>
+
+            <div id="introduction" class="introduction">
+            <span class="span1">
+              Hello, my name is Adel. Thanks a lot for spending your time looking at my resume!
+            </span>
+            </div>
+
+            <div id="hat" class="hat">
+            <span class="spanhat">
+              MBA
+            </span>
+            </div>
+
+            <div id="introduction1" class="introduction1">
+            <span class="spanintroduction1">
+              I recently started coding and now...
+            </br>  I CAN DO IT!
+            </span>
+            </div>
+
+            <div id="leveltable" class="leveltable">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>PROFICIENT</th>
+                  <th>FAMILIAR</th>
+                  <th>BEGINNER</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>HTML</td>
+                  <td><img src="/image/star.jpg" width="30px" height="30px"></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>CSS</td>
+                  <td><img src="/image/star.jpg" width="30px" height="30px"></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Bootstrap</td>
+                  <td></td>
+                  <td><img src="/image/star.jpg" width="30px" height="30px"></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+      </div>
+</div>
+<script src="/movementindex.js"></script>
+<script>
+      window.onload=function()
+      {
+       var background=document.getElementById('background');
+       var forest=document.getElementById('forest');
+       var li1=document.getElementsByTagName('li');
+       var divme=document.getElementById('divme');
+       var divleveltable=document.getElementById('leveltable');
+       var divintroduction=document.getElementById('introduction');
+       var divintroduction1=document.getElementById('introduction1');
+       var divhat=document.getElementById('hat');
+       var divboat=document.getElementById('boat');
+       var divflower=document.getElementById('flower');
+       var divflower1=document.getElementById('flower1');
+       var divanimal=document.getElementById('animal');
+       var divsun=document.getElementById('sun');
+       var divfish=document.getElementById('fish');
+       var divpig=document.getElementById('pig');
+       var divflight=document.getElementById('flight');
+       var divcar=document.getElementById('car');
+       var divcloud=document.getElementById('cloud');
+       var divrestart=document.getElementById('restart');
+       var spanumbrella=document.getElementById('spanumbrella');
+       var imgumbrella=document.getElementById('imgumbrella');
+       var timerbackground=null
+       var timermyself=null
+       var timerLeveltable=null
+       var timerflower=null
+       var timersun=null
+       ispeed=5
+
+       forest.innerHTML+=forest.innerHTML;
+       forest.style.width=li1.length*li1[0].offsetWidth;
+
+        function toMoveBackground()
+           {
+             if(forest.offsetLeft<-forest.offsetWidth/2)
+             {
+               forest.style.left=0
+             }
+               else if(forest.offsetLeft>=0)
+             {
+               forest.style.left=-forest.offsetWidth/2
+             }
+             forest.style.left=forest.offsetLeft-ispeed+'px'
+           }
+
+        toMoveboat()
+        function toMoveboat()
+        {
+          var count = 50;
+          var timer=null
+          timer=setInterval(function() {
+           count--;
+           if(count<0){
+                 divboat.style.left=divboat.offsetLeft-30+'px'
+                  }
+           },200)
+        }
+
+        toMovefish()
+        function toMovefish()
+        {
+          var count = 200;
+          var timer=null
+          timer=setInterval(function() {
+           count--;
+           if(divfish.offsetLeft>-300){
+             if(count<=100 && count>80){
+                   divfish.style.left=divfish.offsetLeft-20+'px'
+                 }else if(count<=80 && count>60){
+                   divfish.style.left=divfish.offsetLeft-20+'px'
+                   divfish.style.top=divfish.offsetTop-2+'px'
+                 }else if(count<=60 && count>40){
+                      divfish.style.left=divfish.offsetLeft-20+'px'
+                      divfish.style.top=divfish.offsetTop+2+'px'
+                    }else if(count<=40 && count>20){
+                            divfish.style.left=divfish.offsetLeft-20+'px'
+                            divfish.style.top=divfish.offsetTop-2+'px'
+                          }else if(count<=20 && count>0){
+                                  divfish.style.left=divfish.offsetLeft-10+'px'
+                                  divfish.style.top=divfish.offsetTop+2+'px'
+                                   }
+           }else if(divfish.offsetLeft<-301){
+             divfish.style.display="none"
+             clearInterval(timer)}
+           },200)
+        }
+
+        toMovesun()
+        function toMovesun()
+        {
+          var count=0
+          timersun=setInterval(function(){
+            count++;
+            if(count%2==0){
+              divsun.style.display="none"
+            }else{
+              divsun.style.display="block"
+            }
+          },600)
+        }
+
+                toMovecloud()
+                function toMovecloud()
+                {
+                  var count = 800;
+                  var timer=null
+                  if(divcloud.offsetLeft>-600){
+                    timer=setInterval(function(){
+                          count--;
+                          if(count==101){
+                            clearInterval(timersun)
+                            divsun.style.display="block"
+                            startMove(divsun,{opacity:"0"})
+                          }else if(count<101){
+                                divcloud.style.left=divcloud.offsetLeft-10+'px'
+                              }
+                                   },100)
+                  }else if(divcloud.offsetLeft<-600){
+                    clearInterval(timer)
+                    divcloud.style.display="none"
+                  }
+                }
+
+
+        function toMoveflower()
+        {
+          if(divflower.offsetLeft<-180)
+          {
+            divflower.style.left=1500
+          }
+          divflower.style.left=divflower.offsetLeft-ispeed+'px'
+        }
+
+        function toMoveflower1()
+        {
+          if(divflower1.offsetLeft<-180)
+          {
+            divflower1.style.left=1500
+          }
+          divflower1.style.left=divflower1.offsetLeft-ispeed+'px'
+        }
+
+        toMoveanimal()
+        function toMoveanimal()
+        {
+          var count=180
+          var timer=null
+          timer=setInterval(function(){
+            count--;
+            if(count<0){
+              divanimal.style.left=divanimal.offsetLeft-20+'px'
+            }
+          },200)
+        }
+
+        toMovepig()
+        function toMovepig()
+        {
+          var count=670
+          var timer=null
+          timer=setInterval(function(){
+            count--;
+            if(divpig.offsetLeft>-300){
+              if(count<=249 && count>240){
+                divpig.style.left=divpig.offsetLeft-25+'px'
+              }
+              if(count<=240 && count>235){
+                divpig.style.left=divpig.offsetLeft+10+'px'
+              }else if(count<=235 && count>225){
+                divpig.style.left=divpig.offsetLeft-25+'px'
+              }
+              else if(count<=225 && count>220){
+                divpig.style.left=divpig.offsetLeft+10+'px'
+              }else if(count<=220 && count>210){
+                divpig.style.left=divpig.offsetLeft-25+'px'
+              }
+              else if(count<=210 && count>205){
+                divpig.style.left=divpig.offsetLeft+10+'px'
+              }else if(count<=205 && count>195){
+                divpig.style.left=divpig.offsetLeft-25+'px'
+              }
+              else if(count<=195 && count>190){
+                divpig.style.left=divpig.offsetLeft+10+'px'
+              }else if(count<=190 && count>180){
+                divpig.style.left=divpig.offsetLeft-25+'px'
+              }
+              else if(count<=180 && count>175){
+                divpig.style.left=divpig.offsetLeft+10+'px'
+              }else if(count<=175 && count>165){
+                divpig.style.left=divpig.offsetLeft-25+'px'
+              }
+              else if(count<=165 && count>160){
+                divpig.style.left=divpig.offsetLeft+10+'px'
+              }else if(count<=160 && count>150){
+                divpig.style.left=divpig.offsetLeft-25+'px'
+              }
+              else if(count<=150 && count>145){
+                divpig.style.left=divpig.offsetLeft+10+'px'
+              }else if(count<=145 && count>135){
+                divpig.style.left=divpig.offsetLeft-25+'px'
+              }
+              else if(count<=135 && count>130){
+                divpig.style.left=divpig.offsetLeft+10+'px'
+              }
+              else if(count<=130 && count>120){
+                divpig.style.left=divpig.offsetLeft-25+'px'
+              }
+              else if(count<=120 && count>115){
+                divpig.style.left=divpig.offsetLeft+10+'px'
+              }
+              else if(count<=115 && count>105){
+                divpig.style.left=divpig.offsetLeft-25+'px'
+              }
+              else if(count<=105 && count>100){
+                divpig.style.left=divpig.offsetLeft+10+'px'
+              }
+            }else if(divpig.offsetLeft>-300){
+              divpig.style.display="none"
+              clearInterval(timer)
+            }
+          },200)
+        }
+
+        toMoveflight()
+        function toMoveflight()
+        {
+            var count = 220;
+            var timer=null
+            if(divflight.offsetLeft>-750){
+              timer=setInterval(function() {
+               count--;
+               if(count<10){
+               divflight.style.left=divflight.offsetLeft-32+'px'}
+               },200)
+            }else if(divflight.offsetLeft<-750){
+              clearInterval(timer)
+              divflight.style.display="none"
+            }
+        }
+
+
+        toMovecar()
+        function toMovecar()
+        {
+          var count = 560;
+          var timer=null
+          if(divcar.offsetLeft<1500){
+            timer=setInterval(function() {
+                  count--;
+                  if(count<0){
+                        divcar.style.left=divcar.offsetLeft+15+'px'}
+                       },100)
+          }else if(divcar.offsetLeft>1500){
+            clearInterval(timer)
+            divcar.style.display="none"
+          }
+        }
+
+        toMoveumbrella()
+        function toMoveumbrella()
+        {
+          var count = 1200;
+          var timer=null
+          timer=setInterval(function(){
+                  count--;
+                  if(count<400 && count>120){
+                    spanumbrella.style.display="block"
+                    imgumbrella.style.display="block"
+                  }else if(count<110){
+                        spanumbrella.style.display="none"
+                        imgumbrella.style.display="none"
+                        divrestart.style.display="block"
+                          }
+                           },100)
+        }
+
+        function toMovemyself()
+        {
+          if(divme.offsetLeft>1500)
+          {
+            divme.style.left=-119
+          }
+          divme.style.left=divme.offsetLeft+2+'px'
+        }
+
+
+        toMovehat()
+        function toMovehat()
+        {
+          var timer1=null
+          var timer2=null
+          timer1=setInterval(function(){
+            if(divhat.offsetLeft>110)
+            {
+              clearInterval(timer1)
+              timer2=setInterval(function(){
+                divhat.style.left=divhat.offsetLeft-1+'px'
+                divhat.style.top=divhat.offsetTop-1+'px'
+              })
+            }
+            divhat.style.left=divhat.offsetLeft+2+'px'
+          },300)
+        }
+
+        toMoveLeveltable()
+        function toMoveLeveltable()
+        {
+          var count = 40;
+          var timer=null
+          timerLeveltable=setInterval(function() {
+           count--;
+           if(count==10){
+               startMove(divleveltable,{opacity:"100"})
+             }else if(count==2){
+               startMove(divleveltable,{opacity:"0"})
+             }else if(count==0){
+                divleveltable.style.display="none"
+                clearInterval(timer)
+               }
+           },1000)
+        }
+
+        function toMoveintroduction()
+        {
+          if(divintroduction.offsetLeft>1500 || divintroduction.style.top>860)
+          {
+            divintroduction.style.display='none'
+            clearInterval(timerintroduction)
+          }
+          divintroduction.style.left=divintroduction.offsetLeft+16+'px'
+          divintroduction.style.top=divintroduction.offsetTop-20+'px'
+        }
+
+
+        toMoveintroduction1()
+        function toMoveintroduction1()
+        {
+
+          var count = 150;
+          var introduction1timer=null
+
+          introduction1timer=setInterval(function() {
+           count--;
+           if(count==40){
+                 startMove(divintroduction1,{opacity:"70"})
+               }
+               else if(count==10){
+                startMove(divintroduction1,{opacity:"0"})
+           }
+           },200)
+         }
+
+         timerbackground=setInterval(toMoveBackground,30)
+         timermyself=setInterval(toMovemyself,300)
+         timerintroduction=setInterval(toMoveintroduction,200)
+         timerflower=setInterval(toMoveflower,30)
+         timerflower1=setInterval(toMoveflower1,30)
+
+
+      }
+</script>
+<body>
+</html>

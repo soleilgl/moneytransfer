@@ -1,0 +1,273 @@
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <script src="/JS/jquery-3.1.1.min.js"></script>
+  <link rel="stylesheet" href="/JS/bootstrap.min.css" type="text/css"/>
+  <link rel="stylesheet" href="/JS/bootstrap-theme.min.css" type="text/css"/>
+  <script src="/JS/bootstrap.min.js"></script>
+   <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+   <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+   <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+   <script src="/JS/pubsub.js"></script>
+</head>
+<body>
+<style>
+.phone{ width:500px;height:800px;background: url('/image/phone2.JPG');background-repeat: no-repeat;background-size: 500px 800px;position: relative;margin:0 auto}
+.father{width:340px;height:578px;margin:0;padding:0;border-style:solid;border-color:grey;position: absolute;top:107px;left:85px;background-color: white}
+.headBar{width:338px;height:60px;margin:0;padding:0; top:107px;left:85px;background-color:grey;position:absolute;font-size: 15;}
+.button{width:338px;height:60px;margin:0;padding:0; top:625px;left:85px;background-color:grey;position:absolute;}
+.text1{color:black;text-align: center;font-size: 25}
+.Emailbox{position:absolute;top:180px;left:100px;float:left;margin-right:190px}
+.Amountbox{position:absolute;top:240px;left:100px;float:left;margin-right:190px}
+.img{width:15px;height:15px;background-repeat:no-repeat;background-size:15px 15px;float:right;display:none;}
+.textbox{position:absolute;margin:0 auto;height:100px;width:310px;border-radius:10px;cursor:pointer;text-indent:12px;float:left;border-style: solid;border-color:lightgrey;top:320px;left:100px}
+.loading{display: none;width:399px;height:598px;position: absolute;margin:0 auto;padding:0:font-size:30px;opacity: 0.4;z-index:100;background: #000 url(http://img.my.csdn.net/uploads/201211/14/1352886927_7549.gif) no-repeat 180px 50%;}
+.dropdownMenu1{height:20px;font-size: 10}
+.reason{position:absolute;top:500px;left:100px;margin:0;width:310px;height:80px;border-style: solid;border-radius:10px;cursor:pointer;text-indent:12px;text-align: left;border-color:lightgrey;}
+.reasont{float:left; width:308px; height:50%;padding:10px}
+.reasonb{float:left; width:308px;height:50%;border-top-style: solid;border-color:lightgrey;padding:10px}
+.Qbox{text-align:left; position:absolute;top:470px;left:100px;width:300px;height:20px;}
+.btnn{width:130px;height:40px;position:absolute;right:30px;top:10px;}
+.btnc{width:130px;height:40px;position:absolute;left:30px;top:10px;}
+.btnl{width:130px;height:40px;position:absolute;right:30px;top:10px}
+.spanemail{background-color:white;border-left-style:none;color:black;}
+.spanamount{height:25px;background-color:white;border-left-style:none}
+.bder{border-right-style:none}
+</style>
+<div className="container" id="container"></div>
+<script type="text/babel">
+var data = <%- JSON.stringify(categories) %>
+
+var currencies = ["USD", "EUR", "JPY"];
+var symbols = ["$", "€", "¥"];
+
+    var Main=React.createClass({
+      getInitialState:function(){
+        return{
+           currency: "USD",
+           currencySymbol: "$",
+           amount: "$"
+        }
+      },
+      render:function(){
+       return(
+         <div className="phone">
+          <Fathercomponent/>
+          <HeadBarcomponent/>
+          <Emailcomponent
+          email={this.state.email}
+          checkemail={this.checkemail}/>
+          <Amountcomponent
+          amount={this.state.amount}
+          changeamount={this.changeamount}
+          handleChangeCurrency = {this.handleChangeCurrency}
+          selectedCurrency = {this.state.currency}
+          selectedCurrencySymbol = {this.state.currencySymbol}
+
+          />
+          <Qcomponent/>
+          <Messagecomponent
+          message={this.state.message}
+          messagehandle={this.messagehandle}/>
+          <Reasoncomponent reasonhandle={this.reasonhandle}/>
+          <Buttoncomponent savedata={this.savedata}/>
+          </div>
+        )
+      },
+      checkemail:function(e){
+          $.ajax({
+          type:"post",
+          url:"/nodejs/sendMoney",
+          data:{email:e.target.value},
+          dataType:"json",
+          success:function(result){
+            if(!result.code){
+              imgemail.style.display="block"
+              }
+          }
+        })
+        this.setState({receiverEmail: e.target.value})
+      },
+      changeamount:function(e){
+          var newAmount;
+        if(Number.parseFloat(e.target.value)) {
+        newAmount = this.state.currencySymbol + e.target.value;
+      } else{
+        newAmount = e.target.value;
+      }
+        this.setState({amount: newAmount})
+      },
+      handleChangeCurrency:function(index){
+        this.setState({currency: currencies[index]});
+        this.setState({currencySymbol: symbols[index]});
+        var newAmount
+        if(Number.parseFloat(this.state.amount)) {
+         newAmount = symbols[index] + this.state.amount;
+       }else {
+         newAmount = symbols[index] + this.state.amount.substr(1);
+       }
+        this.setState({amount: newAmount });
+      },
+      messagehandle:function(e){
+        this.setState({message:e.target.value})
+      },
+      reasonhandle:function(data){
+        console.log("data is" + JSON.stringify(data))
+        this.setState({reason:data.reason})
+      },
+      savedata:function(){
+        var categories={
+                         receiverEmail:this.state.receiverEmail,
+                         amount:this.state.amount,
+                         message:this.state.message,
+                         reason:this.state.reason
+                       }
+        console.log("categories is" + JSON.stringify(categories))
+        $.ajax({
+           type:"post",
+           url:"/nodejs/sendMoney/next",
+           data:categories,
+           dataType:"json",
+            success:function(result){
+              if(result.code==100){
+                location.href="/nodejs/sendMoney/success"
+              }
+            }
+          })
+      }
+    })
+
+    var Fathercomponent=React.createClass({
+      render:function(){
+       return(
+          <div className="father">
+          </div>
+        )
+      },
+    })
+
+    var HeadBarcomponent=React.createClass({
+      render:function(){
+       return(
+            <div className="headBar text1">
+            <p></p>Send Money
+            </div>
+        )
+      },
+    })
+
+    var Emailcomponent=React.createClass({
+      render:function(){
+        var imgemail=document.getElementById('imgemail')
+        return(
+         <div id="Email" className="input-group Emailbox">
+             <input type="text" className="form-control bder" placeholder="To:" aria-describedby="basic-addon1" ref="emailTextInput" value={this.props.email} onChange={this.props.checkemail}/>
+             <span className="input-group-addon spanemail" id="basic-addon1">
+              <img src="/image/okk.JPG" className="img" id="imgemail"/>
+             </span>
+             <p></p>
+          </div>
+        )
+      },
+    })
+
+    var Amountcomponent=React.createClass({
+
+      render:function(){
+       return(
+         <div id="Amount" className="input-group Amountbox">
+             <input type="text" className="form-control bder" value={this.props.amount}  placeholder="Amount:$0.00" aria-label="Amount (to the nearest dollar)" ref="amountTextInput"  onChange={this.props.changeamount}/>
+             <span className="input-group-addon spanamount">
+             <button className="btn btn-default dropdown-toggle" type="button" className="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              {this.props.selectedCurrency}
+             <span className="caret"></span>
+             </button>
+             <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
+             <li onClick={this.handleSelectChange.bind(this, 0)}><a id="usd" href="#">USD</a></li>
+             <li onClick={this.handleSelectChange.bind(this, 1)}><a id="eur" href="#" >EUR</a></li>
+             <li onClick={this.handleSelectChange.bind(this, 2)}><a id="jpy" href="#">JPY</a></li>
+             </ul>
+             </span>
+        </div>
+        )
+      },
+
+      handleSelectChange: function(index) {
+        this.props.handleChangeCurrency(index);
+      }
+      })
+
+    var Messagecomponent=React.createClass({
+      render:function(){
+       return(
+         <div>
+           <input ref="messageTextInput" className="textbox" type="textarea" placeholder="Message(optional):" value={this.props.message} onChange={this.props.messagehandle}/>
+         </div>
+        )
+      },
+    })
+
+    var Qcomponent=React.createClass({
+      render:function(){
+       return(
+              <div className="Qbox">
+              What is this payment for?
+              </div>
+        )
+      },
+    })
+
+    var Reasoncomponent=React.createClass({
+      render:function(){
+       return(
+         <div className="reason">
+             <div className="reasont" ref="reasontselectT" onClick={this.changereasonhandleT}>I am sending money to family or friends
+             <img ref="img1" src="/image/okk.JPG" className="img"/>
+             </div>
+             <div className="reasonb" ref="reasonbselectB" onClick={this.changereasonhandleB}>I am paying for goods or services
+             <img ref="img2" src="/image/okk.JPG" className="img"/>
+             </div>
+         </div>
+        )
+      },
+      changereasonhandleT:function(e){
+        var reason=e.target.textContent;
+        console.log("Reason is" + reason)
+        this.props.reasonhandle({
+          reason:reason
+        })
+        this.refs.reasontselectT.style.color="red"
+        this.refs.img1.style.display="block"
+      },
+      changereasonhandleB:function(e){
+        var reason=e.target.textContent
+        this.props.reasonhandle({
+          reason:reason
+        })
+        this.refs.reasonbselectB.style.color="red"
+        this.refs.img2.style.display="block"
+      },
+    })
+
+    var Buttoncomponent=React.createClass({
+      render:function(){
+       return(
+         <div className="button">
+               <div>
+                <input id="btnc" type="button" value="Clear" className="btnc" onClick={this.linkHandleC}/>
+               </div>
+               <div>
+                <input id="btnn" type="button" value="Next" className="btnn" onClick={this.props.savedata}/>
+                </div>
+          </div>
+        )
+      },
+      linkHandleC:function(){
+        location.href="/nodejs/sendMoney"
+      },
+    })
+
+ReactDOM.render(<Main data={data}/>,document.getElementById('container'))
+</script>
+</body>
+</html>
